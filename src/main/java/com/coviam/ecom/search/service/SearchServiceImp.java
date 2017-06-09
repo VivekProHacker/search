@@ -48,31 +48,7 @@ public class SearchServiceImp implements SearchService{
 		
 	}
 	
-	public Object advSearch(String query){
-		//search by Name;
-		String uri = paths.getProduct() +"/getProductbyNameIgnoreCase/"+query;
-		 
-		 RestTemplate restTemplate = new RestTemplate();
-		// Object result = restTemplate.getForObject(uri, Object.class);
-		 
-		 ResponseEntity<List<SearchList>> responseEntity = restTemplate.exchange(uri , HttpMethod.GET,
-	                null, new ParameterizedTypeReference<List<SearchList>>() {});
-	        List<SearchList> searchListObject = responseEntity.getBody();
-	        
-	        System.out.println(searchListObject.size());
-	        
-	        if(searchListObject.size()<RESULT_SIZE){
-	        	//split the query and remove the stop words.
-	   		 String queryTerms[]=query.split(" ");
-	   		 //https://stackoverflow.com/questions/38073450/searching-for-multiple-words-in-spring-data-repository
-	   		 
-	        }else{
-	        	return searchListObject;
-	        }
 
-		 
-		return null;
-	}
 	
 }	
 
